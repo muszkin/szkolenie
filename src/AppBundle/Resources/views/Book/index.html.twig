@@ -1,0 +1,11 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+    {% for book in books %}
+        <p>{{ book.title }} ({{ book.category.name }})- <a href="{{ path('editBook',{"book_id":book.id}) }}">Edit</a> - <a href="{{ path('showBook',{"book_id":book.id}) }}">Show</a> - <a href="{{ path('deleteBook',{"book_id":book.id}) }}">Delete</a></p>
+        {% else %}
+        <p>Nothing to show</p>
+    {% endfor %}
+    <a href="{{ path("addBook") }}">Add</a>
+{% endblock %}
+

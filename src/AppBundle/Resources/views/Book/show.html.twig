@@ -1,0 +1,13 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+    <p>{{ book.title }}</p>
+    <p>{{ book.category.name }}</p>
+    <p>{{ book.description }}</p>
+    <p>{{ book.image }}</p>
+    <p>{{ book.price }}</p>
+    <a href="{{ path('editBook',{"book_id":book.id})}}">Edit</a>
+    <a href="{{ path('deleteBook',{"book_id":book.id})}}">Delete</a>
+    <a href="{{ path('listAction')}}">List</a>
+{% endblock %}
+

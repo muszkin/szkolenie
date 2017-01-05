@@ -1,0 +1,9 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    <input type="submit" value="create"><a href="{{ path('listAction')}}">List</a>
+    {{ form_end(form) }}
+
+{% endblock %}

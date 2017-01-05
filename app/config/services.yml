@@ -1,0 +1,26 @@
+# Learn more about services, parameters and containers at
+# http://symfony.com/doc/current/service_container.html
+parameters:
+#    parameter_name: value
+
+services:
+#    service_name:
+#        class: AppBundle\Directory\ClassName
+#        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
+  order_notification:
+    class: AppBundle\Notification\OrderNotification
+    tags:
+      - { name: kernel.event_listener, event: book.new , method: send}
+  notification_handler_a:
+    class: AppBundle\Notification\Handler\NotificationHandlerA
+    tags:
+      - { name: notification_handler }
+  notification_handler_b:
+    class: AppBundle\Notification\Handler\NotificationHandlerB
+    tags:
+      - { name: notification_handler }
+  book_listener:
+    class: AppBundle\EventListener\BookListener
+    arguments: ["@event_dispatcher"]
+    tags:
+      - { name: doctrine.event_listener, event: postPersist}
